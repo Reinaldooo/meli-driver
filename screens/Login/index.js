@@ -18,7 +18,7 @@ function Login({ navigation }) {
     if (loginCode) {
       // Get the code and send it to the backend, wich will make adicional requests
       // and give back the user details
-      fetch(`http://192.168.0.150:3500/auth?code=${loginCode}`, {
+      fetch(`https://apimegahack-v3.reinaldowft.com/auth?code=${loginCode}`, {
         method: "post",
       })
         .then((data) => data.json())
