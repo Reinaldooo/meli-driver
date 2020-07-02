@@ -1,25 +1,32 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { ImageBackground, Text, View, Image } from "react-native";
+//
+import * as S from "./styles";
+import loginBackground from "../../assets/loginBackground.png";
+import logo from "../../assets/logo.png";
+import ButtonPrimary from "../../components/ButtonPrimary";
 
 function Welcome({ navigation }) {
   return (
-    <SafeAreaView>
-      <View
-        style={{
-          justifyContent: "center",
-          alignItems: "center",
-          marginTop: "40%",
-        }}
-      >
-        <Text>Bem-vindo!</Text>
-        <Button onPress={() => navigation.navigate("Modal")} title="Login" />
-        <Button
+    <ImageBackground
+      source={loginBackground}
+      style={{
+        height: "100%",
+        resizeMode: "cover",
+      }}
+    >
+      <S.Container>
+        <Image source={logo} style={{ width: 250, height: 250 }} />
+        <ButtonPrimary
+          onPress={() => navigation.navigate("Modal")}
+          title="Entrar"
+        />
+        {/* <ButtonPrimary
           onPress={() => navigation.navigate("Main")}
           title="Ir para a home"
-        />
-      </View>
-    </SafeAreaView>
+        /> */}
+      </S.Container>
+    </ImageBackground>
   );
 }
 export default Welcome;

@@ -1,0 +1,1 @@
+export const oauthUrl = "http://auth.mercadolivre.com.br/authorization?response_type=code&client_id=3430047875313953&redirect_uri=https://apimegahack-v3.reinaldowft.com/auth"
