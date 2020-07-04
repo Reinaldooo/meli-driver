@@ -1,22 +1,25 @@
 import React, { useEffect, useState } from "react";
-import { View, Text, ScrollView, Image } from "react-native";
+import { ScrollView, Image } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Asset } from "expo-asset";
+import { useDispatch } from "react-redux";
+import AsyncStorage from "@react-native-community/async-storage";
 //
 import * as S from "./styles";
 import driver from "../../assets/driver.png";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import { formatDate } from "../../services/utils";
+import { logUserIn } from "../../actions";
 const profilePlaceholder = Asset.fromModule(require("../../assets/Perfil.png"))
   .uri;
 
 function LocalRegistration({ route, navigation }) {
-  const { user } = route.params;
-  const picture = route.params.picture || null;
+  const { user, picture } = route.params;
   const [userImage, setUserImage] = useState(profilePlaceholder);
   const [carImage, setCarImage] = useState(null);
   const [showDP, setShowDP] = useState(false);
   const [dob, setDob] = useState(null);
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (picture) {
@@ -40,7 +43,7 @@ function LocalRegistration({ route, navigation }) {
     setShowDP(false);
     setDob(formatDate(date));
   };
-
+  
   return (
     <S.Container>
       <ScrollView
@@ -143,7 +146,20 @@ function LocalRegistration({ route, navigation }) {
         <ButtonPrimary
           title="Finalizar cadastro"
           extraStyle={{ marginVertical: 20 }}
-          onPress={() => navigation.replace("Main")}
+          onPress={async () => {
+            let userDetails = {
+              ...user,
+              carImage,
+              userImage,              
+            }
+            try {
+              AsyncStorage.setItem("userDetails", JSON.stringify(userDetails))
+            } catch (error) {
+              console.log("Error on saving user details")
+              console.log(error)
+            }
+            dispatch(logUserIn(userDetails))
+          }}
         />
       </ScrollView>
     </S.Container>

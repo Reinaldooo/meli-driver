@@ -27,7 +27,10 @@ function LoginOauth({ navigation }) {
             user: data
           });
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {
+          console.log("Error on fetching user info from backend")
+          console.log(e)
+        });
     }
   }, [loginCode]);
 

@@ -1,8 +1,8 @@
-export const ADD_PRODUCT_CART = "ADD_PRODUCT_CART";
+export const LOGIN = "LOGIN";
 
-// export const addProductCart = (prod) => {
-//   return {
-//     type: ADD_PRODUCT_CART,
-//     payload: prod
-//   };
-// };
+export const logUserIn = (user) => {
+  return {
+    type: LOGIN,
+    payload: user
+  };
+};

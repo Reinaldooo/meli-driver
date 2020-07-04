@@ -94,12 +94,11 @@ function MainTabScreen() {
 }
 
 function Navigation() {
-  const { isLogged } = useSelector(state => state.auth)
+  const { isLogged } = useSelector((state) => state.auth);
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        {console.log(isLogged)}
-        {true && (
+        {!isLogged ? (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
             <RootStack.Screen name="LoginOauth" component={LoginOauth} />
@@ -108,8 +107,9 @@ function Navigation() {
               component={LocalRegistration}
             />
           </>
+        ) : (
+          <RootStack.Screen name="Main" component={MainTabScreen} />
         )}
-        <RootStack.Screen name="Main" component={MainTabScreen} />
         <RootStack.Screen name="CameraWrapper" component={CameraWrapper} />
       </RootStack.Navigator>
     </NavigationContainer>
