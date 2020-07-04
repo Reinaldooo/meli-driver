@@ -1,16 +1,14 @@
 import React from "react";
-import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import AntDesign from "react-native-vector-icons/AntDesign";
 import { useSelector } from "react-redux";
-//
-import IconWithBadge from "../components/IconWithBadge";
 // -- Screens import
 import LoginOauth from "../screens/LoginOauth";
 import LocalRegistration from "../screens/LocalRegistration";
 import CameraWrapper from "../screens/CameraWrapper";
+import Loader from "../screens/Loader";
 import Welcome from "../screens/Welcome";
 import Home from "../screens/Home";
 import NewDelivery from "../screens/NewDelivery";
@@ -28,14 +26,14 @@ const OngoingDeliveriesNavigator = createStackNavigator();
 function NewDeliveryStack() {
   return (
     <NewDeliveryNavigator.Navigator>
+      <NewDeliveryNavigator.Screen name="ListKits" component={ListKits} />
       <NewDeliveryNavigator.Screen
         name="NewDelivery"
         component={NewDelivery}
         options={{
-          headerLeft: null,
+          headerShown: false,
         }}
       />
-      <NewDeliveryNavigator.Screen name="ListKits" component={ListKits} />
       <NewDeliveryNavigator.Screen
         name="DeliveryConfirmation"
         component={DeliveryConfirmation}
@@ -83,16 +81,16 @@ function MainTabScreen() {
       tabBarOptions={{
         activeTintColor: "white",
         tabStyle: {
-          backgroundColor: "#283380"
+          backgroundColor: "#283380",
         },
         showLabel: false,
         style: {
-          backgroundColor: "#283380"
-        }
+          backgroundColor: "#283380",
+        },
       }}
     >
-      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Nova-entrega" component={NewDeliveryStack} />
+      <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
     </Tab.Navigator>
   );
@@ -103,7 +101,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        {!isLogged ? (
+        {false ? (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
             <RootStack.Screen name="LoginOauth" component={LoginOauth} />
@@ -114,7 +112,8 @@ function Navigation() {
           </>
         ) : (
           <RootStack.Screen name="Main" component={MainTabScreen} />
-        )}
+          )}
+        <RootStack.Screen name="Loader" component={Loader} />
         <RootStack.Screen name="CameraWrapper" component={CameraWrapper} />
       </RootStack.Navigator>
     </NavigationContainer>
