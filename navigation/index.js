@@ -4,10 +4,10 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Feather from "react-native-vector-icons/Feather";
-import { SafeAreaView } from "react-native-safe-area-context";
+import { useSelector } from "react-redux";
 //
 import IconWithBadge from "../components/IconWithBadge";
-// Screens
+// -- Screens import
 import LoginOauth from "../screens/LoginOauth";
 import LocalRegistration from "../screens/LocalRegistration";
 import CameraWrapper from "../screens/CameraWrapper";
@@ -18,6 +18,7 @@ import ListKits from "../screens/ListKits";
 import DeliveryConfirmation from "../screens/DeliveryConfirmation";
 import OngoingDeliveries from "../screens/OngoingDeliveries";
 import OngoingDelivery from "../screens/OngoingDelivery";
+// ---
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -93,9 +94,11 @@ function MainTabScreen() {
 }
 
 function Navigation() {
+  const { isLogged } = useSelector(state => state.auth)
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
+        {console.log(isLogged)}
         {true && (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
