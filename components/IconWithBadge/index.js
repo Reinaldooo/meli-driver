@@ -1,11 +1,11 @@
 import * as React from "react";
 import { View, Text } from "react-native";
-import Feather from "react-native-vector-icons/Feather";
+import AntDesign from "react-native-vector-icons/AntDesign";
 
 function Icon({ name, badgeCount, color, size }) {
   return (
     <View style={{ width: 24, height: 24, margin: 5 }}>
-      <Feather name={name} size={size} color={color} />
+      <AntDesign name={name} size={size} color={color} />
       {badgeCount > 0 && (
         <View
           style={{

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, Image } from "react-native";
+import { ScrollView } from "react-native";
 import DateTimePickerModal from "react-native-modal-datetime-picker";
 import { Asset } from "expo-asset";
 import { useDispatch } from "react-redux";
@@ -8,6 +8,7 @@ import AsyncStorage from "@react-native-community/async-storage";
 import * as S from "./styles";
 import driver from "../../assets/driver.png";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import ImageRound from "../../components/ImageRound";
 import { formatDate } from "../../services/utils";
 import { logUserIn } from "../../actions";
 const profilePlaceholder = Asset.fromModule(require("../../assets/Perfil.png"))
@@ -56,7 +57,7 @@ function LocalRegistration({ route, navigation }) {
         }}
       >
         <S.BackImage source={driver} />
-        <S.Image150
+        <ImageRound
           source={{ uri: userImage }}
           style={{
             resizeMode: "cover"
@@ -129,7 +130,7 @@ function LocalRegistration({ route, navigation }) {
           spellCheck={false}
         />
         {carImage && (
-          <S.Image150
+          <ImageRound
             source={{ uri: carImage }}
           />
         )}

@@ -3,7 +3,7 @@ import { View, Text, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import Feather from "react-native-vector-icons/Feather";
+import AntDesign from "react-native-vector-icons/AntDesign";
 import { useSelector } from "react-redux";
 //
 import IconWithBadge from "../components/IconWithBadge";
@@ -72,18 +72,23 @@ function MainTabScreen() {
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
           } else if (route.name === "Nova-entrega") {
-            iconName = focused ? "plus-circle" : "plus-circle";
-            return <IconWithBadge name={iconName} size={size} color={color} />;
+            iconName = focused ? "car" : "car";
           } else if (route.name === "Entregas-Atuais") {
-            iconName = focused ? "list" : "list";
+            iconName = focused ? "dropbox" : "dropbox";
           }
           // You can return any component that you like here!
-          return <Feather name={iconName} size={size} color={color} />;
+          return <AntDesign name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{
-        activeTintColor: "tomato",
-        inactiveTintColor: "gray",
+        activeTintColor: "white",
+        tabStyle: {
+          backgroundColor: "#283380"
+        },
+        showLabel: false,
+        style: {
+          backgroundColor: "#283380"
+        }
       }}
     >
       <Tab.Screen name="Home" component={Home} />

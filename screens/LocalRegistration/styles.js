@@ -17,13 +17,6 @@ export const BackImage = styled.Image`
   position: absolute;
 `;
 
-export const Image150 = styled.Image`
-  margin-top: 5%;
-  width: 150px;
-  height: 150px;
-  border-radius: 75px;
-`;
-
 export const Header = styled.Text`
   padding: 0 5% 10%;
   color: #283380;
