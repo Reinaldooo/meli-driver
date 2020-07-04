@@ -8,7 +8,7 @@ import * as S from "./styles";
 import { oauthUrl } from "../../services/utils";
 import ButtonPrimary from "../../components/ButtonPrimary";
 
-function Login({ navigation }) {
+function LoginOauth({ navigation }) {
   const [loginCode, setLoginCode] = useState(null);
   const [fetchingAccount, setFetchingAccount] = useState(false);
   const [showBackButton, setShowBackButton] = useState(false);
@@ -23,10 +23,9 @@ function Login({ navigation }) {
       })
         .then((data) => data.json())
         .then((data) => {
-          AsyncStorage.setItem("user", JSON.stringify(data));
-        })
-        .then(() => {
-          navigation.navigate("Main");
+          navigation.navigate("LocalRegistration", {
+            user: data
+          });
         })
         .catch((e) => console.log(e));
     }
@@ -80,4 +79,4 @@ function Login({ navigation }) {
     </SafeAreaView>
   );
 }
-export default Login;
+export default LoginOauth;

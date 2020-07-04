@@ -18,7 +18,7 @@ function Welcome({ navigation }) {
       <S.Container>
         <Image source={logo} style={{ width: 250, height: 250 }} />
         <ButtonPrimary
-          onPress={() => navigation.navigate("Modal")}
+          onPress={() => navigation.navigate("LoginOauth")}
           title="Entrar"
         />
         {/* <ButtonPrimary

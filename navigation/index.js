@@ -8,7 +8,9 @@ import { SafeAreaView } from "react-native-safe-area-context";
 //
 import IconWithBadge from "../components/IconWithBadge";
 // Screens
-import Login from "../screens/Login";
+import LoginOauth from "../screens/LoginOauth";
+import LocalRegistration from "../screens/LocalRegistration";
+import CameraWrapper from "../screens/CameraWrapper";
 import Welcome from "../screens/Welcome";
 import Home from "../screens/Home";
 import NewDelivery from "../screens/NewDelivery";
@@ -94,9 +96,18 @@ function Navigation() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        <RootStack.Screen name="Welcome" component={Welcome} />
+        {true && (
+          <>
+            <RootStack.Screen name="Welcome" component={Welcome} />
+            <RootStack.Screen name="LoginOauth" component={LoginOauth} />
+            <RootStack.Screen
+              name="LocalRegistration"
+              component={LocalRegistration}
+            />
+          </>
+        )}
         <RootStack.Screen name="Main" component={MainTabScreen} />
-        <RootStack.Screen name="Modal" component={Login} />
+        <RootStack.Screen name="CameraWrapper" component={CameraWrapper} />
       </RootStack.Navigator>
     </NavigationContainer>
   );
