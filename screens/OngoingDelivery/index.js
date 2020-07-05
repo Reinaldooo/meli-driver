@@ -3,6 +3,7 @@ import { View, Text, Image } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
 import Modal from "react-native-modal";
+import { useDispatch } from "react-redux";
 //
 import * as S from "./styles";
 import driver from "../../assets/driver.png";
@@ -10,6 +11,7 @@ import ProfileDetails from "../../components/ProfileDetails";
 import ButtonPrimary from "../../components/ButtonPrimary";
 import ButtonSecundary from "../../components/ButtonSecundary";
 import ModalContent from "../../components/ModalContent";
+import { finishDelivery, receiveFunds } from "../../actions";
 
 // Fake location
 const origin = {
@@ -23,14 +25,18 @@ const destination = {
 // This API key will become an env variable as soon as the hackaton ends.
 const key = "AIzaSyAsbyJSgRObGx7_Qm4NTN9_2IZXrFX11dY";
 
-function OngoingDelivery({ navigation }) {
+function OngoingDelivery({ navigation, route }) {
+  const dispatch = useDispatch()
+  const { id, value } = route.params;
   const [showWarnModal, setShowWarnModal] = useState(true);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
   const [deliveryEnded, setDeliveryEnded] = useState(false);
 
   useEffect(() => {
     if(deliveryEnded) {
-      navigation.goBack()
+      dispatch(finishDelivery(id))
+      dispatch(receiveFunds(value))
+      navigation.navigate("OngoingDeliveries")
     }
   }, [deliveryEnded])
 

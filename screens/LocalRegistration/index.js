@@ -151,8 +151,7 @@ function LocalRegistration({ route, navigation }) {
             let userDetails = {
               ...user,
               carImage,
-              userImage,
-              balance: 50        
+              userImage    
             }
             try {
               AsyncStorage.setItem("userDetails", JSON.stringify(userDetails))

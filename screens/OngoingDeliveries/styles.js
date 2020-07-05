@@ -29,6 +29,7 @@ export const DeliveryContainer = styled.View`
   border-radius: 10px;
   padding: 10px 20px;
   margin: 10px auto;
+  opacity: ${props => props.delivered ? .3 : 1};
   background-color: #fff;
   flex-direction: row;
   align-items: center;
