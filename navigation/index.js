@@ -31,15 +31,15 @@ function NewDeliveryStack() {
   return (
     <NewDeliveryNavigator.Navigator>
       <NewDeliveryNavigator.Screen
-        name="ListKits"
-        component={ListKits}
+        name="NewDelivery"
+        component={NewDelivery}
         options={{
           headerShown: false,
         }}
       />
       <NewDeliveryNavigator.Screen
-        name="NewDelivery"
-        component={NewDelivery}
+        name="ListKits"
+        component={ListKits}
         options={{
           headerShown: false,
         }}
