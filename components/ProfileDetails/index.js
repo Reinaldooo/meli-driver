@@ -6,12 +6,15 @@ import { Asset } from "expo-asset";
 import * as S from "./styles";
 import ImageRound from "../ImageRound";
 
-const imgPlaceholder = Asset.fromModule(require("../../assets/Perfil.png"))
-  .uri;
+const imgPlaceholder = Asset.fromModule(require("../../assets/Perfil.png")).uri;
 
 function ProfileDetails({ lightBackground }) {
   const { userDetails: user } = useSelector((state) => state.auth);
   const userImage = user?.userImage || imgPlaceholder;
+  const userBalance = user?.balance || 30;
+  const balanceLen = Math.ceil(Math.log10(userBalance + 1));
+  const balanceTextSize = balanceLen < 3 ? "50px" : "45px"
+
   return (
     <>
       <S.Notifications>
@@ -23,14 +26,21 @@ function ProfileDetails({ lightBackground }) {
       <S.Profile>
         <S.ProfilePhoto>
           <ImageRound wt={90} ht={90} source={{ uri: userImage }} />
-          <S.PhotoBadge>
-            <S.PhotoBadgeText>Nível 1</S.PhotoBadgeText>
-            <S.PhotoBadgeText secondary>Junior</S.PhotoBadgeText>
+          <S.PhotoBadge lightBackground={lightBackground}>
+            <S.PhotoBadgeText lightBackground={lightBackground}>
+              Nível 1
+            </S.PhotoBadgeText>
+            <S.PhotoBadgeText secondary lightBackground={lightBackground}>
+              Junior
+            </S.PhotoBadgeText>
           </S.PhotoBadge>
         </S.ProfilePhoto>
         <S.Balance>
           <S.BalanceText lightBackground={lightBackground}>
-            R$ <S.BalanceText primary lightBackground={lightBackground}>45,90</S.BalanceText>
+            R${" "}
+            <S.BalanceText primary lightBackground={lightBackground} textSize={balanceTextSize}>
+              {userBalance},00
+            </S.BalanceText>
           </S.BalanceText>
         </S.Balance>
       </S.Profile>

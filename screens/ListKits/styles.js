@@ -1,5 +1,4 @@
 import styled from "styled-components/native";
-import { FontAwesome } from "@expo/vector-icons";
 
 export const Container = styled.View`
   width: 100%;

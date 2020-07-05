@@ -18,9 +18,9 @@ import DeliveryConfirmation from "../screens/DeliveryConfirmation";
 import OngoingDeliveries from "../screens/OngoingDeliveries";
 import OngoingDelivery from "../screens/OngoingDelivery";
 // ---
-import ongoing from "../assets/icons/Ongoing.png"
-import newDelivery from "../assets/icons/NewDelivery.png"
-import home from "../assets/icons/Home.png"
+import ongoing from "../assets/icons/Ongoing.png";
+import newDelivery from "../assets/icons/NewDelivery.png";
+import home from "../assets/icons/Home.png";
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -59,12 +59,15 @@ function OngoingDeliveriesStack() {
         name="OngoingDeliveries"
         component={OngoingDeliveries}
         options={{
-          headerLeft: null,
+          headerShown: false,
         }}
       />
       <OngoingDeliveriesNavigator.Screen
         name="OngoingDelivery"
         component={OngoingDelivery}
+        options={{
+          headerShown: false,
+        }}
       />
     </OngoingDeliveriesNavigator.Navigator>
   );
@@ -79,29 +82,31 @@ function MainTabScreen() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
-            return <Image source={home}/>
+            return <Image source={home} />;
           } else if (route.name === "Nova-entrega") {
             iconName = focused ? "car" : "car";
-            return <Image source={newDelivery}/>
+            return <Image source={newDelivery} />;
           } else if (route.name === "Entregas-Atuais") {
             iconName = focused ? "dropbox" : "dropbox";
-            return <Image source={ongoing}/>
+            return <Image source={ongoing} />;
           }
         },
       })}
       tabBarOptions={{
         tabStyle: {
           backgroundColor: "#283380",
+          border: "none",
         },
         showLabel: false,
         style: {
           backgroundColor: "#283380",
+          borderTopColor: "transparent",
         },
       }}
     >
+      <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Nova-entrega" component={NewDeliveryStack} />
-      <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
     </Tab.Navigator>
   );
 }
@@ -111,7 +116,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        {!isLogged ? (
+        {false ? (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
             <RootStack.Screen name="LoginOauth" component={LoginOauth} />

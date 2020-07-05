@@ -42,7 +42,7 @@ export const PhotoBadge = styled.View`
   height: 70px;
   width: 70px;
   border-radius: 35px;
-  background-color: rgba(255,255,255,.7);
+  background-color: ${props => props.lightBackground ? "rgba(40, 51, 128, 0.55)" : "rgba(255,255,255,.7)"};
   right: 0;
   top: 120px;
   z-index: -1;
@@ -52,7 +52,7 @@ export const PhotoBadge = styled.View`
 
 export const PhotoBadgeText = styled.Text`
   font-weight: ${(props) => (props.secondary ? "normal" : "bold")};
-  color: #283380;
+  color: ${(props) => (props.lightBackground ? "white" : "#283380")};
 `;
 
 export const Balance = styled.View`
@@ -65,5 +65,5 @@ export const Balance = styled.View`
 export const BalanceText = styled.Text`
   margin-top: 70px;
   color: ${props => props.lightBackground ? "#283380" : "#ffe600"};
-  font-size: ${props => props.primary ? "50px" : "15px"};
+  font-size: ${props => props.primary ? props.textSize : "15px"};
 `;

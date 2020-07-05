@@ -4,8 +4,6 @@ import {
   Text,
   Image,
   ScrollView,
-  View,
-  Button,
 } from "react-native";
 import { AntDesign } from "@expo/vector-icons";
 import Modal from "react-native-modal";
