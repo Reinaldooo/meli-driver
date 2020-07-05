@@ -39,6 +39,7 @@ function OngoingDeliveries({ navigation, route }) {
               onPress={() =>
                 navigation.navigate("OngoingDelivery", { id: delivery.id, value: delivery.value })
               }
+              disabled={finishedDeliveries.includes(delivery.id)}
             />
           </S.DeliveryContainer>
         ))}
