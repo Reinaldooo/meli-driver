@@ -11,7 +11,7 @@ import people from "../../assets/NewDelivery/people.png"
 function NewDelivery({ navigation }) {
   return (
     <S.Container>
-      <Image source={driver} style={{ position: "absolute", top: 0 }} />
+      <Image source={driver} style={{ position: "absolute", top: 0, zIndex: -2 }} />
       <ProfileDetails lightBackground/>
       <S.Header>Encontre sua nova entrega</S.Header>
       <S.Images>

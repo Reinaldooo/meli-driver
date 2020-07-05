@@ -42,7 +42,7 @@ export const PhotoBadge = styled.View`
   height: 70px;
   width: 70px;
   border-radius: 35px;
-  background-color: rgba(255,255,255,.6);
+  background-color: rgba(255,255,255,.7);
   right: 0;
   top: 120px;
   z-index: -1;

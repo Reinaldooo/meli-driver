@@ -1,4 +1,5 @@
 import React from "react";
+import { Image } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -17,6 +18,9 @@ import DeliveryConfirmation from "../screens/DeliveryConfirmation";
 import OngoingDeliveries from "../screens/OngoingDeliveries";
 import OngoingDelivery from "../screens/OngoingDelivery";
 // ---
+import ongoing from "../assets/icons/Ongoing.png"
+import newDelivery from "../assets/icons/NewDelivery.png"
+import home from "../assets/icons/Home.png"
 
 const RootStack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -26,7 +30,13 @@ const OngoingDeliveriesNavigator = createStackNavigator();
 function NewDeliveryStack() {
   return (
     <NewDeliveryNavigator.Navigator>
-      <NewDeliveryNavigator.Screen name="ListKits" component={ListKits} />
+      <NewDeliveryNavigator.Screen
+        name="ListKits"
+        component={ListKits}
+        options={{
+          headerShown: false,
+        }}
+      />
       <NewDeliveryNavigator.Screen
         name="NewDelivery"
         component={NewDelivery}
@@ -69,17 +79,17 @@ function MainTabScreen() {
 
           if (route.name === "Home") {
             iconName = focused ? "home" : "home";
+            return <Image source={home}/>
           } else if (route.name === "Nova-entrega") {
             iconName = focused ? "car" : "car";
+            return <Image source={newDelivery}/>
           } else if (route.name === "Entregas-Atuais") {
             iconName = focused ? "dropbox" : "dropbox";
+            return <Image source={ongoing}/>
           }
-          // You can return any component that you like here!
-          return <AntDesign name={iconName} size={size} color={color} />;
         },
       })}
       tabBarOptions={{
-        activeTintColor: "white",
         tabStyle: {
           backgroundColor: "#283380",
         },
@@ -89,8 +99,8 @@ function MainTabScreen() {
         },
       }}
     >
-      <Tab.Screen name="Nova-entrega" component={NewDeliveryStack} />
       <Tab.Screen name="Home" component={Home} />
+      <Tab.Screen name="Nova-entrega" component={NewDeliveryStack} />
       <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
     </Tab.Navigator>
   );
@@ -101,7 +111,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        {false ? (
+        {!isLogged ? (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
             <RootStack.Screen name="LoginOauth" component={LoginOauth} />
@@ -112,7 +122,7 @@ function Navigation() {
           </>
         ) : (
           <RootStack.Screen name="Main" component={MainTabScreen} />
-          )}
+        )}
         <RootStack.Screen name="Loader" component={Loader} />
         <RootStack.Screen name="CameraWrapper" component={CameraWrapper} />
       </RootStack.Navigator>

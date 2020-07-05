@@ -17,13 +17,13 @@ function DeliveryItem() {
       <View
         style={{ flexDirection: "row", alignItems: "center", marginRight: 10 }}
       >
-        <AntDesign name="plus" size={16} color="green" />
+        <AntDesign name="plus" size={16} color="rgb(52,199,89)" />
         <Text> R$ 10.25</Text>
       </View>
       <AntDesign
         name="rightcircle"
         size={24}
-        color="green"
+        color="rgb(52,199,89)"
         style={{ marginRight: 10 }}
       />
       <View>
