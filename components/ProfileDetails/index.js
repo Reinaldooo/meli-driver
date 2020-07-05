@@ -11,7 +11,7 @@ const imgPlaceholder = Asset.fromModule(require("../../assets/Perfil.png")).uri;
 function ProfileDetails({ lightBackground }) {
   const { userDetails: user } = useSelector((state) => state.auth);
   const userImage = user?.userImage || imgPlaceholder;
-  const userBalance = user?.balance || 30;
+  const userBalance = user?.balance || 68;
   const balanceLen = Math.ceil(Math.log10(userBalance + 1));
   const balanceTextSize = balanceLen < 3 ? "50px" : "45px"
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, Image } from "react-native";
 import MapView, { PROVIDER_GOOGLE, Marker } from "react-native-maps";
 import MapViewDirections from "react-native-maps-directions";
@@ -26,6 +26,13 @@ const key = "AIzaSyAsbyJSgRObGx7_Qm4NTN9_2IZXrFX11dY";
 function OngoingDelivery({ navigation }) {
   const [showWarnModal, setShowWarnModal] = useState(true);
   const [showCompletionModal, setShowCompletionModal] = useState(false);
+  const [deliveryEnded, setDeliveryEnded] = useState(false);
+
+  useEffect(() => {
+    if(deliveryEnded) {
+      navigation.goBack()
+    }
+  }, [deliveryEnded])
 
   const handleWarnModal = () => {
     setShowWarnModal(false);
@@ -34,7 +41,9 @@ function OngoingDelivery({ navigation }) {
   const handleCompletionModal = () => {
     if(showCompletionModal) {
       setShowCompletionModal(false);
-      navigation.goBack()
+      // Can't use a simple navigation.goBack() here because i the state must
+      // change to close the modal, so this is a good case for useEffect
+      setDeliveryEnded(true);
     } else {
       setShowCompletionModal(true);
     }    

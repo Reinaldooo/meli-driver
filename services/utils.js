@@ -68,3 +68,46 @@ export const packLevels = [
     desc: "Pacote delicado"
   },
 ];
+
+export const exampleDeliveries = [
+  {
+    id: 1,
+    value: 10,
+    neighborhood: "Jaguará",
+    size: "Pena",
+    level: "Diamante",
+    date: "01/07/2020 - 14:12h"
+  },
+  {
+    id: 2,
+    value: 18,
+    neighborhood: "Boa vista",
+    size: "Jumbo",
+    level: "Citrino",
+    date: "01/07/2020 - 14:41h"
+  },
+  {
+    id: 3,
+    value: 11,
+    neighborhood: "Boa vista",
+    size: "Mini",
+    level: "Citrino",
+    date: "01/07/2020 - 15:32h"
+  },
+  {
+    id: 4,
+    value: 13,
+    neighborhood: "Guarulhos",
+    size: "Pena",
+    level: "Rubi",
+    date: "01/07/2020 - 15:53h"
+  },
+  {
+    id: 5,
+    value: 16,
+    neighborhood: "Conceição",
+    size: "Master",
+    level: "Rubi",
+    date: "01/07/2020 - 17:10h"
+  },
+]

@@ -4,7 +4,7 @@ import { AntDesign } from "@expo/vector-icons";
 //
 import * as S from "./styles";
 
-function DeliveryItem() {
+function DeliveryItem({ delivery }) {
   return (
     <View
       style={{
@@ -18,7 +18,7 @@ function DeliveryItem() {
         style={{ flexDirection: "row", alignItems: "center", marginRight: 10 }}
       >
         <AntDesign name="plus" size={16} color="rgb(52,199,89)" />
-        <Text> R$ 10.25</Text>
+        <Text> R$ {delivery.value},00</Text>
       </View>
       <AntDesign
         name="rightcircle"
@@ -27,9 +27,9 @@ function DeliveryItem() {
         style={{ marginRight: 10 }}
       />
       <View>
-        <Text style={{ fontWeight: "bold" }}>Entrega Pena</Text>
-        <Text>02/07/2020 - 16:28</Text>
-        <Text>Bairro Vila Nova</Text>
+        <Text style={{ fontWeight: "bold" }}>Entrega {delivery.type}</Text>
+        <Text>{delivery.date}</Text>
+        <Text>Bairro {delivery.neighborhood}</Text>
       </View>
     </View>
   );

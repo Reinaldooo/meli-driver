@@ -6,9 +6,9 @@ import * as S from "./styles";
 import driver from "../../assets/driver.png";
 import ProfileDetails from "../../components/ProfileDetails";
 import ButtonPrimary from "../../components/ButtonPrimary";
+import { exampleDeliveries } from "../../services/utils";
 
 function OngoingDeliveries({ navigation }) {
-  const test = [1, 1, 1, 1, 1, 1, 1, 1];
   return (
     <S.Container>
       <Image
@@ -21,16 +21,16 @@ function OngoingDeliveries({ navigation }) {
       <S.Header>Ordem da rota</S.Header>
 
       <ScrollView style={{ flex: 1, width: "100%" }}>
-        {test.map((it, i) => (
-          <S.DeliveryContainer key={i}>
+        {exampleDeliveries.map((delivery) => (
+          <S.DeliveryContainer key={delivery.id}>
             <S.DeliveryInfo>
               <AntDesign name="plus" size={18} color="rgb(52,199,89)" />
-              <Text>R$ 30,00 Mini Jumbo</Text>
+              <Text>R$ {delivery.value},00 {delivery.size} {delivery.level}</Text>
             </S.DeliveryInfo>
             <ButtonPrimary
               title="Ver rota"
               onPress={
-                () => navigation.navigate("OngoingDelivery", { id: i })
+                () => navigation.navigate("OngoingDelivery", { id: delivery.id })
               }
             />
           </S.DeliveryContainer>

@@ -114,7 +114,7 @@ function ListKits({ navigation }) {
                     <S.PackButtonImg source={{ uri: pack.img }} />
                     <S.PackButtonText>{pack.title}</S.PackButtonText>
                   </S.PackButton>
-                  <S.PackQty>{pack.count}</S.PackQty>
+                  <S.PackQty>{pack.count} Packs</S.PackQty>
                 </S.PackItem>
               </TouchableOpacity>
             ))}
@@ -132,14 +132,14 @@ function ListKits({ navigation }) {
                     <S.PackButtonImg source={{ uri: pack.img }} />
                     <S.PackButtonText>{pack.title}</S.PackButtonText>
                   </S.PackButton>
-                  <S.PackQty>{pack.count}</S.PackQty>
+                  <S.PackQty>{pack.count} Packs</S.PackQty>
                 </S.PackItem>
               </TouchableOpacity>
             ))}
           </S.PacksContainer>
 
           <S.SelectedContainer>
-            <S.Header>Selecionado</S.Header>
+            <S.Header>Pack Selecionado</S.Header>
             <S.SelectedList>
               {selectedSize && selectedLevel ? (
                 <S.SelectedItem>

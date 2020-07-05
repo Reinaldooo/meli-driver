@@ -15,3 +15,11 @@ export const ProfileName = styled.Text`
   font-weight: bold;
   font-size: ${props => props.primary ? "50px" : "15px"};
 `;
+
+export const DeliveriesContainer = styled.ScrollView`
+  flex: 1;
+  background-color: "rgba(255,255,255,.8)";
+  border-radius: 20px;
+  margin: 25px 0;
+  padding: 0 10px;
+`;
