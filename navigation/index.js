@@ -78,16 +78,11 @@ function MainTabScreen() {
     <Tab.Navigator
       screenOptions={({ route }) => ({
         tabBarIcon: ({ focused, color, size }) => {
-          let iconName;
-
           if (route.name === "Home") {
-            iconName = focused ? "home" : "home";
             return <Image source={home} />;
           } else if (route.name === "Nova-entrega") {
-            iconName = focused ? "car" : "car";
             return <Image source={newDelivery} />;
           } else if (route.name === "Entregas-Atuais") {
-            iconName = focused ? "dropbox" : "dropbox";
             return <Image source={ongoing} />;
           }
         },
@@ -95,7 +90,6 @@ function MainTabScreen() {
       tabBarOptions={{
         tabStyle: {
           backgroundColor: "#283380",
-          border: "none",
         },
         showLabel: false,
         style: {
@@ -104,9 +98,9 @@ function MainTabScreen() {
         },
       }}
     >
-      <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
       <Tab.Screen name="Home" component={Home} />
       <Tab.Screen name="Nova-entrega" component={NewDeliveryStack} />
+      <Tab.Screen name="Entregas-Atuais" component={OngoingDeliveriesStack} />
     </Tab.Navigator>
   );
 }

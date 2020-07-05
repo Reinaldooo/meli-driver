@@ -11,6 +11,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import ButtonSecundary from "../../components/ButtonSecundary";
 import ModalContent from "../../components/ModalContent";
 
+// Fake location
 const origin = {
   latitude: -22.923428032276675,
   longitude: -43.17292498424649,
@@ -24,14 +25,19 @@ const key = "AIzaSyAsbyJSgRObGx7_Qm4NTN9_2IZXrFX11dY";
 
 function OngoingDelivery({ navigation }) {
   const [showWarnModal, setShowWarnModal] = useState(true);
-  const [showCompleteModal, setShowCompleteModal] = useState(false);
+  const [showCompletionModal, setShowCompletionModal] = useState(false);
 
   const handleWarnModal = () => {
     setShowWarnModal(false);
   };
 
-  const handleCompleteModal = () => {
-    setShowCompleteModal((old) => !old);
+  const handleCompletionModal = () => {
+    if(showCompletionModal) {
+      setShowCompletionModal(false);
+      navigation.goBack()
+    } else {
+      setShowCompletionModal(true);
+    }    
   };
 
   return (
@@ -50,7 +56,7 @@ function OngoingDelivery({ navigation }) {
         </ModalContent>
       </Modal>
 
-      <Modal isVisible={showCompleteModal} backdropTransitionOutTiming={0}>
+      <Modal isVisible={showCompletionModal} backdropTransitionOutTiming={0}>
         <ModalContent color="#81AA40">
           <S.ModalText large>
             Parabéns!
@@ -58,7 +64,7 @@ function OngoingDelivery({ navigation }) {
           <S.ModalText>
             O valor será creditado em breve junto com seus pontos.
           </S.ModalText>
-          <ButtonSecundary title="Fechar" onPress={handleCompleteModal} />
+          <ButtonSecundary title="Fechar" onPress={handleCompletionModal} />
         </ModalContent>
       </Modal>
 
@@ -94,7 +100,7 @@ function OngoingDelivery({ navigation }) {
       <S.Buttons>
         <ButtonPrimary
           title="Entrega realizada"
-          onPress={handleCompleteModal}
+          onPress={handleCompletionModal}
         />
         <ButtonSecundary title="Problemas" />
       </S.Buttons>
