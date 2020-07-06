@@ -18,9 +18,3 @@ O app foi desenvolvido em React Native com ajuda do Expo, para facilitar a visua
 
 * `React Navigation` é utilizado para viabilizar a navegação do usuário pelo app de forma atráves de botões e da barra inferior
 * ```Redux``` é utilizado para criar uma fonte única de verdade no app, ou a chamada `loja`, que armazena os dados do app e somente atravez de ações enviadas para esta loja, as informações podem ser alteradas. Isso garante imutabilidade das informações e garante um app mais estável.
-
-
-##### Rodar o projeto
-
-* Para rodar a versão hospedada, clique [aqui](https://exp.host/@reinaldooo/melidriver).
-* Infelizmente a Apple passou a bloquear aplicativos Expo e no momento só usuários de Android podem acessá-lo
