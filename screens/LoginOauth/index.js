@@ -60,7 +60,7 @@ function LoginOauth({ navigation }) {
           source={{
             uri: oauthUrl,
           }}
-          // incognito={true}
+          incognito={true}
           style={{ flex: 1 }}
           onNavigationStateChange={handleWebViewNavigationStateChange}
         />

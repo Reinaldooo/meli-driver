@@ -110,7 +110,7 @@ function Navigation() {
   return (
     <NavigationContainer>
       <RootStack.Navigator mode="modal" headerMode="none">
-        {false ? (
+        {!isLogged ? (
           <>
             <RootStack.Screen name="Welcome" component={Welcome} />
             <RootStack.Screen name="LoginOauth" component={LoginOauth} />
