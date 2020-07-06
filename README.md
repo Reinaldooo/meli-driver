@@ -6,8 +6,10 @@
 Melidriver é um App para motoristas parceiros do mercado livre. A fim de reduzir a complexidade logística do MELI e possibilitar que recebam uma renda extra, beneficiando tanto a cia quando o consumidores.
 </p>
 
-:-------------------------:|:-------------------------:
-![IOS PNG](/doc/Screen1.png)  |  ![Android PNG](/doc/Screen1.png)
+<p  align="center">
+<img  width="200px"  src="./docs/Screen1.png">
+<img  width="200px"  src="./docs/Screen2.png">
+</p>
 
 #### Tecnologia:
 O app foi desenvolvido em React Native com ajuda do Expo, para facilitar a visualização por vários dispositivos em tempo de desenvolvimento. O React Native permite o desenvolvimento de apps para Android e IOS utilizando Javascript.
