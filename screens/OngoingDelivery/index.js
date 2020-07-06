@@ -12,6 +12,7 @@ import ButtonPrimary from "../../components/ButtonPrimary";
 import ButtonSecundary from "../../components/ButtonSecundary";
 import ModalContent from "../../components/ModalContent";
 import { finishDelivery, receiveFunds } from "../../actions";
+import { DIRECTIONS_KEY } from "../../ENV";
 
 // Fake location
 const origin = {
@@ -23,7 +24,6 @@ const destination = {
   longitude: -43.178851660341024,
 };
 // This API key will become an env variable as soon as the hackaton ends.
-const key = "AIzaSyAsbyJSgRObGx7_Qm4NTN9_2IZXrFX11dY";
 
 function OngoingDelivery({ navigation, route }) {
   const dispatch = useDispatch()
@@ -106,7 +106,7 @@ function OngoingDelivery({ navigation, route }) {
         <MapViewDirections
           origin={origin}
           destination={destination}
-          apikey={key}
+          apikey={DIRECTIONS_KEY}
           strokeWidth={5}
           strokeColor="#283380"
         />
