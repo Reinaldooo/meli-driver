@@ -21,6 +21,7 @@
     },
     "web": {
       "favicon": "./assets/favicon.png"
-    }
+    },
+    "description": "Melidriver é um App para motoristas parceiros do mercado livre. A fim de reduzir a complexidade logística do MELI e possibilitar que recebam uma renda extra, beneficiando tanto a cia quando o consumidores. "
   }
 }
